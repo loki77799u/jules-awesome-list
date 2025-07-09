@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a365d">
+    <meta name="description" content="The Bridge - Your universal clipboard for sharing text and images between devices">
+
+    <!-- iOS Web App Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="The Bridge">
+
+    <!-- Android Web App Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>The Bridge</title>
+
+    <!-- PWA Manifest (inline) -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlRoZSBCcmlkZ2UgLSBVbml2ZXJzYWwgQ2xpcGJvYXJkIiwKICAic2hvcnRfbmFtZSI6ICJUaGUgQnJpZGdlIiwKICAiZGVzY3JpcHRpb24iOiAiWW91ciB1bml2ZXJzYWwgY2xpcGJvYXJkIGZvciBzaGFyaW5nIHRleHQgYW5kIGltYWdlcyBiZXR3ZWVuIGRldmljZXMiLAogICJzdGFydF91cmwiOiAiLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2Y3ZmFmYyIsCiAgInRoZW1lX2NvbG9yIjogIiMxYTM2NWQiLAogICJvcmllbnRhdGlvbiI6ICJhbnkiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUdBQUFBQmdDQVlBQUFDdFBBNS9BQUFBQkdkQlRVRUFBTEdQQy94aEJRQUFBQ0JqU0ZKTkFBQjZKZ0FBZ0lRQUFQb0FBQUNBNkFBQWRUQUFBT3BnQUFBNnZBQUEzSjVJbjkzWEFBQUJqMGxFUVZSb0JlMmN2MjZERlJRK0VmMFNTMjJKV2NnSGJnOGdqWmdnWEtkQnQ0eElDQWdJQ0JJU0ZUTEVCSUVFdkl4ZUpKUThqd21SSVNKdkJOWmMzSzNLOFQzbTdtOG55Y0R4WmdsdTUzdmRXd1pyQzd1N083dTV1MS93T1F6Sk1FU0lERWlKa0FFcEtjcEFJNGhTSnkxeFFtclNpTU9KRGxSSGdLRVNGZVE2TGhtK1hUZEVjRlFZaEVrUUlrUUVLYVFsSk93ajhib0lrQU11b2RJc0FSa3hORGJPQW5HTWJKRENKaGthSWl3bGdBU0VxU1FZaExHaUlrbGhnNUkyUUo0OUdwb0RLU0pEemtrbEZJT3dZZEpwMHBqZlY5MEtJazFScmJxY3BjRTRvQnJJaWJOcjJvSE5DNEhzUHdISk1Ha0lHQW1zQW5Zb1VsNUZJa0RLMmJFN3hRUUFJQ2dwSTBtQ2M0RFlCZ01XQXlSQ0dYTUFjQUVhSlJZbm9HMUFjR0FQd01Ea0xaZG1qWWdHZXdLa0lJY1JqQWVZNXhTUEJwQlFYSmpNRXhxTjc0ek1Nd1o2azRBcitBSWtYbnI4eXNTdnpOcm5Zc25qbEE1TXV4Y0RRUXZBQVd2RzlZemNacXhaSUxYYUtGaWpTblVqYlJJT0dOeW1KVlJRekltMFg2OFpwcFpJK3RKcXdaSXczMy9Hc09DdVhyQmo4MFdJa3NBQitaOGJGaGtzKzB3T0FBVmpReE1SakQ1MW5mSVJEVU9QL08zbjJCbVdaVHpSdEIzT05Yd0F2dWYrdU8xT2M2MVBhNGNUd0FETHlxSnl6U3dxRmx3bGI5dU1XR29BTW5JU3hBRTRFTEVoc0tIcjFFMHJJK0g4RGl4aXl6a2tZZ1JZOXhQek9EYy9Jek1DaTF6alJIOCtiQTZIaVVpdFkyQXcxaEQzOFpOd01kZ1VjUjBJUUFBQUFCSlJVNUVya0pnZ2c9PSIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJzaXplcyI6ICI5Nng5NiIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFNQUFBQURBQ0FZQUFBRFdBc0xTQUFBQUJHZEJUVUVBQUxHUEMveGhCUUFBQUNCalNGSk5BQUI2SmdBQWdJUUFBUG9BQUFDQTZBQUFkVEFBQU9wZ0FBQTZtQUFBM2pJeEkxUjQ1QUFBREMwbEVRVlI0MmUyY3YyN0VNaEI4OGZaY2czWllvUURCQkFhMGF3YzZzakdDQllJRWhBUlFRb01SZ1J3YUQwcUhiT2sxdjFVQkJnNFJvYXoyODN3NkdJMmM2VzNuZXRMdFByM3FtY3h6NHhJd09BNkJ3S0l2SGVBT2RDR0prSWlzaE1TMGlWQUdGaHlaQnNsRjRtVGlNalJNbEJJbWNBTEJZa1JJQWdtaEVTWW02cGs1T0FKVkMwekdRdU5RZ1dORXd0VHlJQXdJRUJNSGZISUFOQ0FBc1BRTUp3SUFQQlQxR1FWcU1ZQU1BSjBJV01FMEFJaGdrU1JaUUpvcUcwRTJBcHNBOFo4Nzc3eE5qRnRjSWN3UUp5SUJHWkFDS2dESkVHY1REVzNOSldJT3lJU0pNaW1JaU1CeXdJU0VVS1VwUmtvMkE2Um9FUWltUWRJcGdKQ2FFdUs4TWU4VDJLWElpS3FSQnNPZ0VES0lpSDBoTlFrTGxEa0JxQVJpcERJTmxDcVI5V3VJbDJUZzJWRU1pekN3NDhIZ1lBNkJ3VGtBRGk1REJEcmpibGNRY0pKdUlBQ2lUSWxISVdGTEFwRHMyMGozZlFSaU1JVElva0VJYkdJSGhFK0UxMnQ0SEEyTnpFY1FIeUJWRkJRd0xBYnV5RldsbGxRQUtGa01KdHh5Z0Q3c0FLRXIxaVdITEpGSm9vTTFzQWdLQTJRRGdRQXBESUdnSkVBQUFFVFE1cGJPdGE4OGtxWWtRQW9vRW9SUU1VaEVQUnVCQUtqaTBhekpFWXJSMEFRa3FQQUpJQ3pDUUNxZ0xJckhJUkJJeWE0SFF5d0huSUFTRW9WV2dJQTZQQmxGOFcwYUhraElTb2lGQmtqSUtHUVJCdlBnSWdOWGxGWXdMQUR4SkN5RzlQQUtCaW9KcG9BMURGMGdXQTBXQWVDaHFaZ3l0WU1qb0JGV0FGS0ZrMElTZURQNEFReWlQaWxha0NRQldBRWk1U1FFMmM0STJRaUJ2SkFvYWdzUnVJU1JJaEdCTkZCdDB0SUhCSXBFbW9TUWpoQ0ttdGVzak1vQUdRR0t4S0VFZ1E0eVlQQUFDNFM1TEVhZ1pJbUp3QkFsRW1TS2lXTURIQ1NBazM1aWhraUdwTFVvcUpRS29vaElJQ09BRUlmMndTNjNvSkJVdUFUa3dQdEpRQk1lOUg2WDlpMGd4UXdaRXNnY3FBN0dGaFN5Sk5qRW5xbWpJUnBvUTBvcWp3QjdpSVFQSDdrNlJKRFJMaCtxSGNBQUJzQTFGOFhJb0ZJa0FBQUFBQkpSVTVFcmtKZ2dnPT0iLAogICAgICAidHlwZSI6ICJpbWFnZS9wbmciLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFnQUFBQUlBQ0FZQUFBRElrbHZUQUFBQUJHZEJUVUVBQUxHUEMveGhCUUFBQUNCalNGSk5BQUI2SmdBQWdJUUFBUG9BQUFDQTZBQUFkVEFBQU9wZ0FBQTZtQUFBM2pJeEkxUjQ1QUFBRUY1SlJFRlVlTnJ0bmU5dFZHVWN4NE9iN3pHY2wxbVd1K2R5eENZYUNNdUpOb05tRnRnSy9rT1JKSVppMElaQVVCTFRqc0FHbTBoNjR6NnJTNExMK1F3Y0Y2b2ZOdFpROGczR1pOTy85THJzT3Avdm5ubXlleHRuUGo3ajdJQzg4ODdZaDZ1RUJBVUJPRFErTHc5QjRFa2dpRUpBNGxGQklvQTJCSmtVcGhJU0lZQXdJSW9FS2dzcEVTUWdNT2drN01kTWJUQ0FFeVJKQ0xGekN3UkpJUUl2aTBRQjhLMklZcUV3SEJJQlpJT2xBQVJsUVFFaGhBVEFHNGtCaFNqQ3cwaFVKQ2owM0FQQllOSlRDbXpJMGhLUFJBRXdRT0FJSU1ySEpCdVNRb0FHd0RaQUpGSUthQnJQQWNnSkJNaUJ4SU9RRmdjT0J4NGtLQndCRUNlQUFFQmNBRXdKOEFBUUJjRFlRSkFEb2tLQndJQVlJQm8wa0Rrd1V6Qm9RRUFTRWdDQ0FGQ0FEeGlFc0JNQmJoRE5SQkY0U0lCTWFJUk9XZ3dBMFFNRFFoMkJTQ2swS2VJak5GazRnZGdEQStGTUV1QURTV0JGQW5ReHREcWtJUUlvQ1FFK0NJd01NSkVhQWlSQjdnR2pBQk9BZ0RKZzBnQ3NCaW9FcUdHUUNxSmlLN0pCMGU2eUFBSmhHcVJoQUlQak1EV0pJazRBQUpCb2dJQTl3REZqbXlrYnJJSm9FY0NXb0JGc0JVQ2VBRUJEaWprQWdQQUVqc0lJOUxJRW1DdFFBR2dOc0FFQUtBcG1wSUlyQnhRRGdBSkdSYkN4QUFkQVFHSDhJWWFCeUJJNGNGUlVUNGdaQU1BeUFSS0FBTHpTQ00zOXJKaHJJQUFJUkNVQVJGQUpDR0lCUURnWUFJRWhOSUZBQlFBUVd4RkFtQ1ljSHNZY1pJSTJxYUc0MG9SQUpJa0FBSFJTSklJQUJJQzZCUVRTQVFJaU1TQUlZQUpBa2FRUlpBR0VCdUFCWUJBQUJNaVdJaGtpa1RBQUpFMktBS0FQQUJJQUpBSUNJeUNRQm9nZ2hBQkRRZFJBQU1FaVFBQXBJUlJrUVJvUUpGVWxwQWtCT1psQzRBQlJJQUhBZ0VBY0NXa0FDcUJBaEJwaGtsSWlwQUVBQ2dpQWxRcDhDV2tSQ3FJRUVnRUIwZ0FBU1lOQ0dBRkZSZ01oVVlBQUlabEFBUnpBWUFJUUdBbkJuaDJCS0JDQ0VjaGdRTWhDQ1dBQUFBRktsQXdvQkFHQ1lFZ3M2R01RQ2xOQWtBU0pXQXdJZ1FUa3BFQ1FKQ2NJQ1JJNHRvSUNnWUI0VHdvQkFCV0xaSUFWQUJxQ3VBUUNFQ1VLa2lDQU1rcUJKQUJBa3dRR0FJQUFNa0FBRDVBQVBaQUdmQUlJbGdxY29BQVJBbkFBU2dBVUdvSUFvdEdLQ2xJSWJCQUpROEVGQnhFMkNBQUFBUWxOQ29JSmhJQUlVQUNCQUFJQUJsQUdSQUJpQWdtRUpCRUlGT0FCQ0VQQUlUaElrRUNJa0FhUUpBSUNGQXFRUUFCQURRQ1FFQmlBZElBb0VJRGNBQUJJSFNJZ0tSQ0lSUEFGQUVBR2dRU05RSkFOQ2dBZ0FJQWNJRldaQkFGUUFMQzJBZ0tBSEFHSkdVUUdBQVN4SW9KUWdBQVdRQkFBQUJFZ0FBS0FEQVJBVWh3QWdJSkxBQVZVeElPeUZ3a1VoQVlBQUlBQUFBaEFBUWlBcHNJQW9BU1FCRUJnd0I4blJJb0FLQUpPQklFQWlBaUdRZ0VBTWlBUUpFQUIwb0lJRENvSUFCQVNBUkFBQVFFQUFBMWpBR2dGRUF6Z29LS1JRSUlBRWdCUUlIa0lwQ0lCQUFGUXNBUmtCRUJJQ1VBT0ZKQ0VRQUpIekFJQUdBSUJLUlJJRUFFQ2hBa1VBQ0FJSTFDQVJBRGdDQkhBTHpRR0lpQ0FBQ0JLQUVCQUJFQUNBQWdDQUFDUUFBQ0FBZ0NBQUNSQUFBS0FBQklBZ0FCQVFBQVFnQUFCaHZvQUFBaWtBQ0VJQUFRQklISkNUaGtBZ0VBUUNKaGpEQVBBSVlJQUVGbUUxQUNnQUJBQ0FRSEFBQklBS0FBQUFPQUFJRUFBQklBQUJBQUdBQkVvQUFGRUFBQUVBQUFhSElBQXdRQUJBQVBBRkJBQUFBSUNBQUJJQWdBQ0FCQUFBQUJBQVFCQUFBTUFRQUlBQUFJQUFBQUlBZ0FBRUNDQVJJbUF6QVFnWm9DNkFBS0FKa2dCa0FVQ0RCSVJJSlJnSElBaUhBdHRJb0VBQUFFQVRTcktBQUFBQVFBQUFHUkFJQ0FCVUFnb2dBSkFrRVVBRG9HdUhBakJ3UUpBSURzQVFBRFlaQUJFQUNHNUJBcmdBRUFBakRrQUFBWklJa0FCQWlZREFBQW9CQU16SGhBb0FGQVFBNEJBRTlpRDBDQTRJTkJSQWVBU0JqQ2ZDQkFBaElQRUFBQUdFQ01JRUFBQUVBZ0lBSUltQlFBQWhGS0JDRUNFY0FFK0pCbVZ3QVFrQUFCRUFBRE1BQUJBQUNQQUFBSk1BaUJvRmlOQUJBQWdXV2hRa05DQWhGQUZBQUpJZ2pnQWFBSWNBSXdqUnBHSU5CQTJFaVJNTmtSN2dwRUFCQUFRR0dpSVJBS2NCQVRhQVFhQ0FRUklJRWhjTkFBRFFFQUFBQWRpU1FDQUFBQUFJQUFFQUFBVHJpYWhzQUFBQUpTVWhFVWdBQUFBQUJBQUVBSUFnQ0FBZ0NBQWlBZ0FEL3UvdDNnWHI0QUFBQUFFbEZUa1N1UW1DQyIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJzaXplcyI6ICI1MTJ4NTEyIgogICAgfQogIF0KfQ==">
+
+    <!-- Icon for Safari -->
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAADWAsLSAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAABLAAAASwAU18cXgAAAAd0SU1FB+kBCRYxNDI5NDA5AAADCUlEQVR42e2cv27EMhB88fZcg3ZYoQDBBAa0awc6sjGCBYIEhARQQoMRgRwaD0qHbOk1v1UBBg4RoazzVzGIzdmnetu5qtcxz4xIwOA6BwKIvHeAOdCGJkIislMS0iVAGFhyZBslF4mTiMjRMlBImcALBYkRIAgmhESYm6pk5OAJVCWzGQuNQgWNEwtTyIAwIEBMHfHIANCAAsLQMJwIAPBT1GQVQMYAN0IWMEQAIhgkSRZQJoqGwE2ApsA8Z87v7xNjFtcIcwQJyIBGZACKgDJEGcTDW3NJWIO2ISJMimIiMBywISEUKUpRko2A6RoEQimQdIpgJCaEuK8Me8T2KXIiKqRBsOgEDKIiHwhNQkLlDkBqARipDINlCqR9WuIl2Tg2VEMizCw48HgYA6BwTkADi5DBDrjblcQcJJuIACiTIlHIWFLApDs2Wj3fQRiMITIokEIbGIHhE+E12t4HA2NzEcQHyBVFBQwLAbuyFWllQAKFkMJtxygD7sAKEr1iWHLJFJoo01sAgKA2QDgQApDIGgJEAAETQ5pbOta88kqYkQAooEoRQMUhEPRuBAKjiQazJEYrRQAQkqPAJICzCQCqgLIrHIRBIya4HQywHnIASEoVWgIA6PBlF8W0aHkhISoiFBkjIKGQRBvPgIgNXlFYwLADxJCyG9PAKBioJpo01DFwgWA0WAeCh6ZgytYMjoBFWAFKFkQISeDp4AQyiPilakCQAWAEi5SQEQC4ITJEyZJRAoaMJACzJKkUIJQKooRIICOAEIf2wS63oJBUuATkwPtJQBMe9H6X9i0gxQwZEsgcqA7GFhSyJNjEnqmjIRpoQ0oqjwB7iIQPH7k6RJDRL0qqHcAABsA1F8XIoFIkAAAABJRU5ErkJggg==">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-deep-navy: #1a365d;
+            --brand-electric-blue: #3182ce;
+            --brand-orange: #ed8936;
+            --brand-dark-gray: #2d3748;
+            --brand-light-gray-bg: #f7fafc;
+            --brand-white-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--brand-light-gray-bg);
+            color: var(--brand-dark-gray);
+            overscroll-behavior-y: contain;
+        }
+
+        .impact-font {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: var(--brand-deep-navy);
+        }
+
+        .btn-primary {
+            background-color: var(--brand-orange);
+            font-family: Verdana, sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-primary:hover {
+            background-color: #c05621;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background-color: var(--brand-electric-blue);
+            font-family: Verdana, sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-secondary:hover {
+            background-color: #2c5aa0;
+        }
+
+        .btn-secondary:active {
+            transform: scale(0.98);
+        }
+
+        .link-style {
+            color: var(--brand-electric-blue);
+        }
+
+        #sharedContent {
+            word-break: break-word;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--brand-electric-blue);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .install-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--brand-deep-navy);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 1000;
+            max-width: calc(100% - 40px);
+        }
+
+        .install-banner button {
+            background: white;
+            color: var(--brand-deep-navy);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* iOS Safari specific styles */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            #app {
+                height: 100vh;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+        /* OPTIONAL: VISUAL FEEDBACK STYLES */
+        .ring-2 {
+            box-shadow: 0 0 0 2px currentColor;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .ring-blue-400 {
+            color: #60a5fa; /* Tailwind blue-400 */
+        }
+
+        .ring-green-400 {
+            color: #4ade80; /* Tailwind green-400 */
+        }
+
+        #textInput, #imageInputContainer /* Assuming imageInput is wrapped or styled directly */ {
+            transition: border-color 0.3s ease;
+        }
+        /* If #imageInput is the file input itself, styling its border might be tricky.
+           Often a container around it is styled, or specific ::file-selector-button pseudo-element.
+           For simplicity, if #imageInput is a direct target for border, it's included.
+           The provided JS targets imageInput.style.borderColor.
+        */
+        #imageInput {
+            transition: border-color 0.3s ease; /* Added as per JS */
+        }
+
+
+        /* Auto-sync indicator (Example style, can be refined) */
+        .auto-sync-active { /* This class needs to be added to a relevant element via JS if used */
+            position: relative;
+        }
+
+        .auto-sync-active::after {
+            content: "Auto-sync enabled";
+            position: absolute;
+            top: -20px; /* Adjust as needed */
+            right: 0;
+            font-size: 11px;
+            color: #48bb78; /* Tailwind green-500 */
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <!-- Install Banner -->
+    <div id="installBanner" class="install-banner">
+        <span>📱 Install The Bridge app</span>
+        <button onclick="installPWA()">Install</button>
+        <button onclick="dismissInstallBanner()">Not now</button>
+    </div>
+
+    <div id="app" class="w-full max-w-md mx-auto bg-white rounded-2xl shadow-2xl p-8 space-y-6">
+
+        <!-- Login View -->
+        <div id="loginView">
+            <h1 class="impact-font text-4xl text-center">The Bridge</h1>
+            <p class="text-center text-gray-600 mt-2">Your universal clipboard.</p>
+            <div class="mt-8 space-y-4">
+                <div>
+                    <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                    <input type="text" id="firstName" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="e.g., Loki">
+                </div>
+                <div>
+                    <label for="passcode" class="block text-sm font-medium text-gray-700">Passcode</label>
+                    <input type="text" id="passcode" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Enter a code or generate one">
+                </div>
+                <div class="flex items-center justify-between space-x-4">
+                    <button id="generateCode" class="w-full btn-secondary text-white py-2 px-4 rounded-md">Generate Code</button>
+                    <button id="connect" class="w-full btn-primary text-white py-2 px-4 rounded-md">Connect</button>
+                </div>
+                <p id="loginError" class="text-red-500 text-sm text-center"></p>
+            </div>
+        </div>
+
+        <!-- Main App View -->
+        <div id="mainView" class="hidden">
+            <div class="flex justify-between items-center mb-4">
+                <h1 class="impact-font text-2xl">The Bridge</h1>
+                <button id="disconnect" class="text-sm link-style hover:underline">Disconnect</button>
+            </div>
+            <p class="text-center bg-gray-100 p-2 rounded-md text-sm">Connected as: <strong id="connectionId" class="font-mono"></strong></p>
+
+            <div class="mt-6 space-y-4">
+                <!-- Text Input -->
+                <div>
+                    <textarea id="textInput" rows="4" class="w-full p-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="Paste text here to share..."></textarea>
+                    <button id="sendText" class="w-full mt-2 btn-primary text-white py-2 px-4 rounded-md">Send Text</button>
+                </div>
+
+                <!-- Image Input -->
+                <div>
+                    <input type="file" id="imageInput" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"/>
+                    <button id="sendImage" class="w-full mt-2 btn-primary text-white py-2 px-4 rounded-md">Send Image</button>
+                </div>
+            </div>
+
+            <!-- Shared Content Display -->
+            <div class="mt-8">
+                <h2 class="text-lg font-semibold text-gray-800 border-b pb-2">Live Clipboard</h2>
+                <div id="sharedContent" class="mt-4 p-4 bg-gray-50 rounded-md min-h-[100px] flex items-center justify-center text-gray-500">
+                    Waiting for content...
+                </div>
+                <div id="loader" class="hidden loader mx-auto my-4"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // PWA Installation
+        let deferredPrompt;
+        const installBanner = document.getElementById('installBanner');
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            // Create inline service worker
+            const swContent = `
+                const CACHE_NAME = 'the-bridge-v1';
+                const urlsToCache = [
+                    '/',
+                    'https://cdn.tailwindcss.com',
+                    'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap',
+                    'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js',
+                    'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js',
+                    'https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js'
+                ];
+
+                self.addEventListener('install', event => {
+                    event.waitUntil(
+                        caches.open(CACHE_NAME)
+                            .then(cache => cache.addAll(urlsToCache))
+                    );
+                });
+
+                self.addEventListener('fetch', event => {
+                    event.respondWith(
+                        caches.match(event.request)
+                            .then(response => response || fetch(event.request))
+                    );
+                });
+            `;
+
+            const blob = new Blob([swContent], { type: 'application/javascript' });
+            const swUrl = URL.createObjectURL(blob);
+
+            navigator.serviceWorker.register(swUrl)
+                .then(registration => console.log('SW registered'))
+                .catch(err => console.log('SW registration failed'));
+        }
+
+        // PWA Install prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+
+            // Show install banner after 5 seconds
+            setTimeout(() => {
+                if (!localStorage.getItem('installDismissed')) {
+                    installBanner.style.display = 'flex';
+                }
+            }, 5000);
+        });
+
+        function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                    installBanner.style.display = 'none';
+                });
+            }
+        }
+
+        function dismissInstallBanner() {
+            installBanner.style.display = 'none';
+            localStorage.setItem('installDismissed', 'true');
+        }
+
+        // iOS Safari install prompt
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches;
+
+        if (isIOS && !isInStandaloneMode) {
+            setTimeout(() => {
+                if (!localStorage.getItem('iosInstallDismissed')) {
+                    alert('To install The Bridge on iOS: Tap the share button and select "Add to Home Screen"');
+                    localStorage.setItem('iosInstallDismissed', 'true');
+                }
+            }, 10000);
+        }
+    </script>
+
+    <!-- Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, doc, setDoc, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getStorage, ref, uploadString, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
+
+        // IMPORTANT: Replace with your own Firebase project configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        // UI Elements
+        const loginView = document.getElementById('loginView');
+        const mainView = document.getElementById('mainView');
+        const firstNameInput = document.getElementById('firstName');
+        const passcodeInput = document.getElementById('passcode');
+        const generateCodeBtn = document.getElementById('generateCode');
+        const connectBtn = document.getElementById('connect');
+        const disconnectBtn = document.getElementById('disconnect');
+        const connectionIdDisplay = document.getElementById('connectionId');
+        const textInput = document.getElementById('textInput');
+        const sendTextBtn = document.getElementById('sendText');
+        const imageInput = document.getElementById('imageInput');
+        const sendImageBtn = document.getElementById('sendImage');
+        const sharedContent = document.getElementById('sharedContent');
+        const loginError = document.getElementById('loginError');
+        const loader = document.getElementById('loader');
+
+        let currentConnectionId = null;
+        let unsubscribe = null;
+
+        // Configuration for auto-sync
+        const AUTO_SYNC_DELAY = 500; // Milliseconds to wait after user stops typing
+        let textSyncTimeout = null;
+        let lastSyncedText = '';
+        let lastSyncedImage = '';
+
+        // Get or create a unique device ID
+        function getDeviceId() {
+            let deviceId = sessionStorage.getItem('bridgeDeviceId');
+            if (!deviceId) {
+                deviceId = `device-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+                sessionStorage.setItem('bridgeDeviceId', deviceId);
+            }
+            return deviceId;
+        }
+
+        // Event Listeners
+        generateCodeBtn.addEventListener('click', () => {
+            passcodeInput.value = Math.floor(100000 + Math.random() * 900000);
+        });
+
+        connectBtn.addEventListener('click', () => {
+            const firstName = firstNameInput.value.trim().toLowerCase();
+            const passcode = passcodeInput.value.trim();
+
+            if (!firstName || !passcode) {
+                loginError.textContent = "Please enter both name and passcode.";
+                return;
+            }
+            loginError.textContent = "";
+            currentConnectionId = `${firstName}-${passcode}`;
+
+            loginView.classList.add('hidden');
+            mainView.classList.remove('hidden');
+            connectionIdDisplay.textContent = currentConnectionId;
+
+            listenToBridge();
+
+            // Enable auto-sync listeners after connection
+            enableAutoSync();
+        });
+
+        disconnectBtn.addEventListener('click', () => {
+            if (unsubscribe) {
+                unsubscribe();
+            }
+            currentConnectionId = null;
+            mainView.classList.add('hidden');
+            loginView.classList.remove('hidden');
+            firstNameInput.value = '';
+            passcodeInput.value = '';
+            sharedContent.innerHTML = 'Waiting for content...';
+
+            // Disable auto-sync listeners
+            disableAutoSync();
+        });
+
+        // Manual Send Text Button (keep for explicit sending)
+        sendTextBtn.addEventListener('click', async () => {
+            await syncText();
+        });
+
+        // Manual Send Image Button (keep for explicit sending)
+        sendImageBtn.addEventListener('click', async () => {
+            await syncImage();
+        });
+
+        // ===========================================
+        // NEW AUTO-SYNC FUNCTIONS
+        // ===========================================
+
+        // Function to sync text to Firebase
+        async function syncText() {
+            const text = textInput.value;
+            if (text && currentConnectionId && text !== lastSyncedText) {
+                try {
+                    const bridgeRef = doc(db, 'bridges', currentConnectionId);
+                    await setDoc(bridgeRef, {
+                        type: 'text',
+                        content: text,
+                        timestamp: new Date(),
+                        deviceId: getDeviceId() // Add device ID to prevent echo
+                    }, { merge: true });
+                    lastSyncedText = text;
+
+                    // Visual feedback - briefly change border color
+                    textInput.style.borderColor = '#48bb78';
+                    setTimeout(() => {
+                        textInput.style.borderColor = '#e2e8f0';
+                    }, 300);
+                } catch (error) {
+                    console.error("Error syncing text: ", error);
+                }
+            }
+        }
+
+        // Function to sync image to Firebase
+        async function syncImage() {
+            const file = imageInput.files[0];
+            if (file && currentConnectionId) {
+                // Check if this is a new image
+                const fileIdentifier = `${file.name}-${file.size}-${file.lastModified}`;
+                if (fileIdentifier === lastSyncedImage) return;
+
+                loader.classList.remove('hidden');
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = async () => {
+                    const dataUrl = reader.result;
+                    const storageRef = ref(storage, `bridges/${currentConnectionId}/${Date.now()}-${file.name}`);
+                    try {
+                        await uploadString(storageRef, dataUrl, 'data_url');
+                        const downloadURL = await getDownloadURL(storageRef);
+
+                        const bridgeRef = doc(db, 'bridges', currentConnectionId);
+                        await setDoc(bridgeRef, {
+                            type: 'image',
+                            content: downloadURL,
+                            timestamp: new Date(),
+                            deviceId: getDeviceId()
+                        }, { merge: true });
+
+                        lastSyncedImage = fileIdentifier;
+
+                        // Visual feedback
+                        imageInput.style.borderColor = '#48bb78';
+                        setTimeout(() => {
+                            imageInput.style.borderColor = '#e2e8f0';
+                        }, 300);
+                    } catch (error) {
+                        console.error("Error uploading image: ", error);
+                    } finally {
+                        loader.classList.add('hidden');
+                    }
+                };
+            }
+        }
+
+        // Enable auto-sync event listeners
+        function enableAutoSync() {
+            // Auto-sync on text input (typing)
+            textInput.addEventListener('input', handleTextInput);
+
+            // Auto-sync on paste
+            textInput.addEventListener('paste', handleTextPaste);
+
+            // Auto-sync on image selection
+            imageInput.addEventListener('change', handleImageChange);
+
+            // Auto-sync on Enter key (for quick send)
+            textInput.addEventListener('keypress', handleEnterKey);
+        }
+
+        // Disable auto-sync event listeners
+        function disableAutoSync() {
+            textInput.removeEventListener('input', handleTextInput);
+            textInput.removeEventListener('paste', handleTextPaste);
+            imageInput.removeEventListener('change', handleImageChange);
+            textInput.removeEventListener('keypress', handleEnterKey);
+        }
+
+        // Handle text input with debouncing
+        function handleTextInput(e) {
+            // Clear existing timeout
+            clearTimeout(textSyncTimeout);
+
+            // Set new timeout for auto-sync
+            textSyncTimeout = setTimeout(() => {
+                syncText();
+            }, AUTO_SYNC_DELAY);
+        }
+
+        // Handle paste event for immediate sync
+        function handleTextPaste(e) {
+            // Small delay to ensure pasted content is in the textarea
+            setTimeout(() => {
+                syncText();
+            }, 100);
+        }
+
+        // Handle image selection for auto-upload
+        function handleImageChange(e) {
+            if (e.target.files && e.target.files[0]) {
+                syncImage();
+            }
+        }
+
+        // Handle Enter key for immediate sync (Shift+Enter for new line)
+        function handleEnterKey(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                syncText();
+                // Optional: Clear the text field after sending
+                // textInput.value = '';
+                // lastSyncedText = '';
+            }
+        }
+
+        // Firestore Listener
+        function listenToBridge() {
+            if (currentConnectionId) {
+                const bridgeRef = doc(db, 'bridges', currentConnectionId);
+                const myDeviceId = getDeviceId();
+
+                unsubscribe = onSnapshot(bridgeRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        loader.classList.add('hidden');
+
+                        // Only update if the content is from another device
+                        if (data.deviceId && data.deviceId !== myDeviceId) {
+                            if (data.type === 'text') {
+                                sharedContent.innerHTML = `
+                                    <div class="w-full">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-xs text-gray-500">Received text:</span>
+                                            <button onclick="copyToClipboard('${data.content.replace(/'/g, "\\'")}')"
+                                                    class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded hover:bg-blue-200">
+                                                Copy
+                                            </button>
+                                        </div>
+                                        <p class="text-left bg-white p-3 rounded border">${data.content}</p>
+                                    </div>
+                                `;
+
+                                // Show notification effect
+                                sharedContent.classList.add('ring-2', 'ring-blue-400');
+                                setTimeout(() => {
+                                    sharedContent.classList.remove('ring-2', 'ring-blue-400');
+                                }, 1000);
+                            } else if (data.type === 'image') {
+                                sharedContent.innerHTML = `
+                                    <div class="w-full">
+                                        <span class="text-xs text-gray-500 block mb-2">Received image:</span>
+                                        <img src="${data.content}" alt="Shared Image" class="max-w-full max-h-64 rounded-md object-contain mx-auto">
+                                    </div>
+                                `;
+
+                                // Show notification effect
+                                sharedContent.classList.add('ring-2', 'ring-green-400');
+                                setTimeout(() => {
+                                    sharedContent.classList.remove('ring-2', 'ring-green-400');
+                                }, 1000);
+                            }
+                        }
+                    } else {
+                        sharedContent.innerHTML = 'Waiting for content...';
+                        setDoc(doc(db, 'bridges', currentConnectionId), {
+                            type: 'init',
+                            content: 'channel created',
+                            timestamp: new Date(),
+                            deviceId: myDeviceId
+                        });
+                    }
+                }, (error) => {
+                    console.error("Error listening to bridge: ", error);
+                    alert("Connection error. Check console for details.");
+                });
+            }
+        }
+
+        // ===========================================
+        // UTILITY FUNCTIONS
+        // Add these to the global scope in your HTML
+        // ===========================================
+
+        // Copy to clipboard function (add to global scope)
+        window.copyToClipboard = function(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Visual feedback
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.classList.add('bg-green-100', 'text-green-700');
+                btn.classList.remove('bg-blue-100', 'text-blue-700');
+
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('bg-green-100', 'text-green-700');
+                    btn.classList.add('bg-blue-100', 'text-blue-700');
+                }, 1500);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
